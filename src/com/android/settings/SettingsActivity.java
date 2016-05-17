@@ -16,6 +16,7 @@
 
 package com.android.settings;
 
+import com.android.settings.ethernet.EthernetSettings; //add by FriendlyARM
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
@@ -216,6 +217,7 @@ public class SettingsActivity extends Activity
             R.id.wireless_section,
             R.id.wifi_settings,
             R.id.bluetooth_settings,
+            R.id.ethernet_settings,  //add by FriendlyARM
             R.id.data_usage_settings,
             R.id.sim_settings,
             R.id.wireless_settings,
@@ -247,6 +249,7 @@ public class SettingsActivity extends Activity
             AdvancedWifiSettings.class.getName(),
             SavedAccessPointsWifiSettings.class.getName(),
             BluetoothSettings.class.getName(),
+            EthernetSettings.class.getName(),//add by FriendlyARM
             SimSettings.class.getName(),
             TetherSettings.class.getName(),
             WifiP2pSettings.class.getName(),

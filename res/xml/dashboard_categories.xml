@@ -38,6 +38,13 @@
                 android:icon="@drawable/ic_settings_bluetooth2"
                 />
 
+        <!-- Ethernet add by FriendlyARM -->
+        <dashboard-tile
+                android:id="@+id/ethernet_settings"
+                android:icon="@drawable/ic_settings_dock"
+                android:fragment="com.android.settings.ethernet.EthernetSettings"
+                android:title="@string/ethernet_settings" />
+
         <!-- SIM Cards -->
         <dashboard-tile
                 android:id="@+id/sim_settings"
