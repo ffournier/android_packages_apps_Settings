@@ -4917,4 +4917,24 @@
 
     <!-- Text to display in regulatory info screen (from device overlay). -->
     <string name="regulatory_info_text"></string>
+
+    <!-- Ethernet configuration dialog -->
+    <string name="eth_config_title">Configure Ethernet device</string>
+    <string name="eth_setting">Ethernet</string>
+    <string name="eth_dev_list">Ethernet Devices:</string>
+    <string name="eth_con_type">Connection Type</string>
+    <string name="eth_con_type_dhcp">DHCP</string>
+    <string name="eth_con_type_manual">Static IP</string>
+    <string name="eth_keep_on">Keep ethernet up</string>
+    <string name="eth_dns">DNS server</string>
+    <string name="eth_gw">Gateway</string>
+    <string name="eth_ipaddr">IP address</string>
+    <string name="eth_quick_toggle_title">Ethernet</string>
+    <string name="eth_quick_toggle_summary">Turn on Ethernet</string>
+    <string name="eth_conf_perf_title">Ethernet configuration</string>
+    <string name="eth_conf_summary">Configure Ethernet devices</string>
+    <string name="eth_mask">Netmask</string>
+    <string name="eth_toggle_summary_off">Turn off Ethernet</string>
+    <string name="eth_toggle_summary_on">Turn on Ethernet</string>
+    <string name="eth_settings_error">Failed to set: Please enter the valid characters 0~255</string>
 </resources>

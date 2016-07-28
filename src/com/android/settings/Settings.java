@@ -92,6 +92,8 @@ import com.android.settings.wifi.AdvancedWifiSettings;
 import com.android.settings.wifi.WifiEnabler;
 import com.android.settings.wifi.WifiSettings;
 import com.android.settings.wifi.p2p.WifiP2pSettings;
+import com.android.settings.ethernet.EthernetSettings;
+import com.android.settings.ethernet.EthernetEnabler;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -136,6 +138,7 @@ public class Settings extends PreferenceActivity
     private int[] SETTINGS_FOR_RESTRICTED = {
             R.id.wireless_section,
             R.id.wifi_settings,
+            R.id.ethernet_settings,
             R.id.bluetooth_settings,
             R.id.data_usage_settings,
             R.id.wireless_settings,
@@ -309,6 +312,7 @@ public class Settings extends PreferenceActivity
     private static final String[] ENTRY_FRAGMENTS = {
         WirelessSettings.class.getName(),
         WifiSettings.class.getName(),
+        EthernetSettings.class.getName(),
         AdvancedWifiSettings.class.getName(),
         BluetoothSettings.class.getName(),
         TetherSettings.class.getName(),
@@ -779,6 +783,7 @@ public class Settings extends PreferenceActivity
         private static final int HEADER_TYPE_COUNT = HEADER_TYPE_BUTTON + 1;
 
         private final WifiEnabler mWifiEnabler;
+        private final EthernetEnabler mEthernetEnabler;
         private final BluetoothEnabler mBluetoothEnabler;
         private AuthenticatorHelper mAuthHelper;
         private DevicePolicyManager mDevicePolicyManager;
@@ -797,7 +802,8 @@ public class Settings extends PreferenceActivity
         static int getHeaderType(Header header) {
             if (header.fragment == null && header.intent == null) {
                 return HEADER_TYPE_CATEGORY;
-            } else if (header.id == R.id.wifi_settings || header.id == R.id.bluetooth_settings) {
+            } else if (header.id == R.id.wifi_settings || header.id == R.id.bluetooth_settings ||
+                       header.id == R.id.ethernet_settings) {
                 return HEADER_TYPE_SWITCH;
             } else if (header.id == R.id.security_settings) {
                 return HEADER_TYPE_BUTTON;
@@ -842,6 +848,7 @@ public class Settings extends PreferenceActivity
             // Temp Switches provided as placeholder until the adapter replaces these with actual
             // Switches inflated from their layouts. Must be done before adapter is set in super
             mWifiEnabler = new WifiEnabler(context, new Switch(context));
+            mEthernetEnabler = new EthernetEnabler(context, new Switch(context));
             mBluetoothEnabler = new BluetoothEnabler(context, new Switch(context));
             mDevicePolicyManager = dpm;
         }
@@ -912,6 +919,8 @@ public class Settings extends PreferenceActivity
                     // Would need a different treatment if the main menu had more switches
                     if (header.id == R.id.wifi_settings) {
                         mWifiEnabler.setSwitch(holder.switch_);
+                    } else if (header.id == R.id.ethernet_settings) {
+                        mEthernetEnabler.setSwitch(holder.switch_);
                     } else {
                         mBluetoothEnabler.setSwitch(holder.switch_);
                     }
@@ -986,11 +995,13 @@ public class Settings extends PreferenceActivity
 
         public void resume() {
             mWifiEnabler.resume();
+            mEthernetEnabler.resume();
             mBluetoothEnabler.resume();
         }
 
         public void pause() {
             mWifiEnabler.pause();
+            mEthernetEnabler.pause();
             mBluetoothEnabler.pause();
         }
     }

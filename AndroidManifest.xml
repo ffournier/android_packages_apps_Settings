@@ -124,6 +124,26 @@
         </activity>
 
 
+        <!-- Ethernet controls -->
+
+        <activity android:name="Settings$EthernetSettingsActivity"
+                android:label="@string/eth_setting"
+                android:taskAffinity=""
+                android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.settings.ETHERNET_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.VOICE_LAUNCH" />
+                <category android:name="com.android.settings.SHORTCUT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.ethernet.EthernetSettings" />
+            <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
+                android:resource="@id/ethernet_settings" />
+        </activity>
+
+
         <!-- Top-level settings -->
 
         <activity android:name="Settings$WifiSettingsActivity"

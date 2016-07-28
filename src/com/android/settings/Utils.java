@@ -340,6 +340,16 @@ public class Utils {
     }
 
     /**
+     * Returns the Ethernet properties (IP Addresses).
+     */
+    public static String getEtherProperties(Context context) {
+        ConnectivityManager cm = (ConnectivityManager)
+                context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        LinkProperties prop = cm.getLinkProperties(ConnectivityManager.TYPE_ETHERNET);
+        return prop.toString();
+    }
+
+    /**
      * Returns the default link's IP addresses, if any, taking into account IPv4 and IPv6 style
      * addresses.
      * @param context the application context
