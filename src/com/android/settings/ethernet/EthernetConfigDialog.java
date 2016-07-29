@@ -366,10 +366,10 @@ public class EthernetConfigDialog extends AlertDialog implements
             }
         } else {
             Slog.i(TAG, "mode manual");
-            if (isIpAddress(mIpaddr.getText().toString())
-                    && isIpAddress(mGw.getText().toString())
-                    && isIpAddress(mDns.getText().toString())
-                    && isIpAddress(mMask.getText().toString())) {
+            if (isIpAddress(mIpaddr.getText().toString(), true)
+                    && isIpAddress(mMask.getText().toString(), true)
+                    && isIpAddress(mGw.getText().toString(), false)
+                    && isIpAddress(mDns.getText().toString(), false)) {
                 info.setConnectMode(EthernetDevInfo.ETH_CONN_MODE_MANUAL);
                 info.setIpAddress(mIpaddr.getText().toString());
                 info.setRouteAddr(mGw.getText().toString());
@@ -393,10 +393,13 @@ public class EthernetConfigDialog extends AlertDialog implements
         mChangedType = mChangedKeep = mChangedIp = false;
     }
 
-    private boolean isIpAddress(String value) {
+    private boolean isIpAddress(String value, boolean force) {
         int start = 0;
         int end = value.indexOf('.');
         int numBlocks = 0;
+
+        if (value.length() == 0 && !force)
+            return true;
 
         while (start < value.length()) {
             if (end == -1) {
